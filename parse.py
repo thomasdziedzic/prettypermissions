@@ -1,11 +1,9 @@
 from lxml import etree
 import glob
 
-#tree = etree.parse(open("Standard.profile"))
-
-#root = tree.getroot()
-
-obj = "Account"
+obj = "Schedules_and_Actuals__c"
+#obj = "OpportunityLineItem"
+#obj = "Schedule_Header__c"
 
 prefix = "{http://soap.sforce.com/2006/04/metadata}"
 
@@ -44,16 +42,16 @@ for profilename in profilenames:
                 permission_str = ""
 
                 if readable == "true":
-                    permission_str += "r"
+                    permission_str += "read"
                 else: # not readable
-                    permission_str += "nr"
+                    permission_str += "no read"
 
-                permission_str += " - "
+                permission_str += "-"
 
                 if editable == "true":
-                    permission_str += "e"
+                    permission_str += "edit"
                 else: # not editable
-                    permission_str += "ne"
+                    permission_str += "no edit"
 
                 line.append(permission_str)
     lines.append(line)
